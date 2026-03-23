@@ -20,3 +20,4 @@ jobs:
         with:
           name: Axon17-App
           path: app/build/outputs/apk/debug/app-debug.apk
+ 
