@@ -1,10 +1,15 @@
 package com.axon17.ai;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,12 +18,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button btnTerminal = findViewById(R.id.btn_terminal);
+        // طلب تصريح الوصول للملفات
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            if (checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 1);
+            }
+        }
 
+        Button btnTerminal = findViewById(R.id.btn_terminal);
         btnTerminal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // الانتقال إلى شاشة الترمينال الحقيقي
                 Intent intent = new Intent(MainActivity.this, TerminalActivity.class);
                 startActivity(intent);
             }
