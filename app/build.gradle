@@ -3,15 +3,21 @@ plugins {
 }
 
 android {
-    namespace 'com.axon.game'
+    namespace 'com.axon17.ai'
     compileSdk 34
 
     defaultConfig {
-        applicationId "com.axon.game"
+        applicationId "com.axon17.ai"
         minSdk 21
         targetSdk 34
         versionCode 1
         versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+        }
     }
 }
 
