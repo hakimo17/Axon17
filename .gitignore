@@ -1,0 +1,9 @@
+*.gguf
+.gradle
+build/
+captures/
+elibc/
+.externalNativeBuild
+*.apk
+*.jks
+.idea
